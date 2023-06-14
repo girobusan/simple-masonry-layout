@@ -4,6 +4,7 @@ body, html{
   padding: 0;
   min-height: 100vh;
   box-sizing: border-box;
+  font-size: 16px;
 }
 
 body *{
@@ -14,19 +15,21 @@ h1{
 }
 
 .item{
-  height: 300px;
+  height: 200px;
   box-sizing: border-box;
-  border: 1px solid gray;
+  border: 1px solid black;
   margin: 8px 4px;
   page-break-inside: avoid;
   break-inside: avoid;
   padding: 1em;
+  background-color: lightblue;
+  
 }
 .item.short{
-  height: 150px;
+  height: 100px;
 }
 .item.long{
-  height: 400px;
+  height: 300px;
 }
 #columns.masonryWatched{
   column-count: 1;
