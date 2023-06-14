@@ -40,10 +40,13 @@ Init function parameter is an object with fields:
 |--|--|--|
 | container | CSS selector of container node | Required. Must be unique for your page. |
 | children | CSS selector for masonry items | Optional, if not present, will be a concatenation of previous value and `> *` - usually works fine. |
-| countFn | Function, which will get a container node as argument, and return the number of columns | Optional, if not present, some default value will be used |
-| columnClass | Optional, class name for generated column elements | Optional, default = `col` | 
+| countFn | Function, which will get a container node as argument, and return the number of columns | Optional, if not present, some* default value will be used |
+| columnClass | Class name for generated column elements | Optional, default = `col` | 
 
 ### CSS
 
 After initialization it will add `masonryWatched` class to your container node. It facilitates the creation of fallback styles (see example). You can have regular columns of flex for users without JS, and remove fallback rules for others.
+
+------
+\* maybe, 2?
 
