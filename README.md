@@ -28,7 +28,7 @@ Include JS somewhere, than call init function like this:
   <script>
      window.masonry.init( {
         container: ".myMasonry",
-        countFn: ()=>{ return window.innerWidth > 800 ? 4 : 2 }
+        countFn: (container)=>{ return window.innerWidth > 800 ? 4 : 2 }
     } )
     
   </script>
@@ -38,12 +38,12 @@ Init function parameter is an object with fields:
 
 | name | value | note |
 |--|--|--|
-| container | CSS selector of container node | required! |
-| children | CSS selector for masonry items | if not present, will be a concatenation of previous value and `> *` - usually works fine |
-| countFn | function, which will get a container node as argument, and return the number of columns | not required, if not present, some default value will be used |
-| columnClass | class name for generated column elements | default = `col` | 
+| container | CSS selector of container node | Required. Must be unique for your page. |
+| children | CSS selector for masonry items | Optional, if not present, will be a concatenation of previous value and `> *` - usually works fine. |
+| countFn | Function, which will get a container node as argument, and return the number of columns | Optional, if not present, some default value will be used |
+| columnClass | Optional, class name for generated column elements | Optional, default = `col` | 
 
 ### CSS
 
-After iniitialisation it will add `masonryWatched` class to your container node. It facilitates the creation of fallback styles (see exanple). You can have regular columns of flex for users without JS, and remove fallback rules for others.
+After initialization it will add `masonryWatched` class to your container node. It facilitates the creation of fallback styles (see example). You can have regular columns of flex for users without JS, and remove fallback rules for others.
 
