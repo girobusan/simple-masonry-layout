@@ -23,6 +23,7 @@ h1{
   break-inside: avoid;
   padding: 1em;
   background-color: lightblue;
+  border-radius: 4px;
   
 }
 .item.short{

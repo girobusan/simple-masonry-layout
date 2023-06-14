@@ -3,6 +3,8 @@ Simple Masonry Layout For Static Site
 
 Very simple (yet responsive) implementation of masonry layout, aimed for use on mostly static sites. It splits child elements of container element to separate divs for future css styling. 
 
+It does not count heights or so, just splits items by count and may look pretty awful with certain sets of item heights. 
+
 ![pic](./docs/screenshot.png)
 
 How to
