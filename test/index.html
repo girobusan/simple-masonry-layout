@@ -4,13 +4,12 @@
   <meta charset="UTF-8">
   <title></title>
   <script src="../js/masonry.js"></script>
-  <script>
-    window.addEventListener("DOMContentLoaded",
-    function(){ window.masonry.init( {
+  <script defer>
+     window.masonry.init( {
         container: "#columns",
         countFn: ()=>{ return window.innerWidth > 800 ? 4 : 2 }
-    } ) }
-    )
+    } )
+    
   </script>
   <link rel="stylesheet"  href="../css/style.css">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -34,7 +33,7 @@
     <div class="item long">Lorem Ipsum 14</div>
     <div class="item long">Lorem Ipsum 15</div>
     <div class="item">Lorem Ipsum 16</div>
-    <div class="item">Lorem Ipsum 17</div>
+    <div class="item">Lorem :Ipsum 17</div>
     <div class="item">Lorem Ipsum 18</div>
     <div class="item">Lorem Ipsum 19</div>
     <div class="item long">Lorem Ipsum 20</div>

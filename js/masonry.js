@@ -1,8 +1,19 @@
 window.masonry = {
 
-  colsNow: null,
+  colsNow: 0,
 
-  init: function(props){ 
+  init: function(p){
+
+    const M = window.masonry;
+    if(document.readyState=="loading")
+    {
+      window.addEventListener("DOMContentLoaded" , ()=>M.setup(p) )
+    }else{
+      M.setup(p)
+    }
+  },
+
+  setup: function(props){ 
      console.info("Init Masonry...")
      const M = window.masonry;
      if(!props.container){ return }
@@ -19,7 +30,7 @@ window.masonry = {
      //
      //gather childs
      M.items = Array.from( M.container.querySelectorAll(M.childSelector) );
-     console.log(M.items)
+     // console.log(M.items)
      //
      //add listener
      window.addEventListener("resize", M.doColumns)
@@ -29,13 +40,12 @@ window.masonry = {
   },
 
   doColumns: function(){
-    console.log("DO COLUMNS");
      const M = window.masonry;
-     console.info("need columns:" , M.count())
      //how many columns do we need?
      const cn = M.count();
      if(cn==M.colsNow){ return; }
      //start working
+     console.info("required columns:" , cn)
      window.removeEventListener("resize", M.doColumns)
      if(cn>M.items.length){ M.colsNow = M.items.length ; return M.items.length }
      //count lengths of columns
@@ -62,9 +72,7 @@ window.masonry = {
      colElements.forEach( e=>M.container.appendChild(e) );
      M.colsNow = cn;
      //throttle
-     console.log("about to add timeout")
      window.setTimeout(()=>{ 
-        console.log("return event listener...")
         window.addEventListener("resize", M.doColumns) 
         } , 300)
      

@@ -9,6 +9,9 @@ body, html{
 body *{
   box-sizing: border-box;
 }
+h1{
+  padding:  0 32px;
+}
 
 .item{
   height: 300px;
@@ -18,19 +21,19 @@ body *{
   page-break-inside: avoid;
   break-inside: avoid;
   padding: 1em;
-  }
-  .item.short{
-    height: 150px;
-  }
-  .item.long{
-    height: 400px;
-  }
-  #columns.masonryWatched{
-    column-count: 1;
-    display: flex;
-    flex-direction: row;
-    justify-items: stretch;
-  }
+}
+.item.short{
+  height: 150px;
+}
+.item.long{
+  height: 400px;
+}
+#columns.masonryWatched{
+  column-count: 1;
+  display: flex;
+  flex-direction: row;
+  justify-items: stretch;
+}
 
 #columns{
   column-count: 3;
@@ -40,9 +43,6 @@ body *{
 
 #columns .col{
   flex-grow: 1;
-  margin-right: 0;
+  margin: 0;
 }
 
-#columns .col:last-child{
-  margin-right: 0;
-}
