@@ -28,6 +28,11 @@ window.masonry = {
      M.items = Array.from( M.container.querySelectorAll(M.childSelector) );
      //add listener
      window.addEventListener("resize", M.doColumns)
+
+     if(props.bySize){
+       //we have to rebuild columns after complete load
+       window.addEventListener("load" , M.doColumns);
+     }
      M.doColumns();
   },
 
