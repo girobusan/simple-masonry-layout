@@ -7,10 +7,13 @@ It does not count heights or so, just splits items by count and may look pretty 
 
 ![pic](./docs/screenshot.png)
 
+[DEMO](https://girobusan.github.io/simple-masonry-layout/)
+
 How to
 ------
 
 ### HTML & Java Script
+
 
 You must have layout container, and a bunch of child elements inside it like this:
 
