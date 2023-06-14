@@ -45,6 +45,7 @@ Init function parameter is an object with fields:
 | container | CSS selector of container node | Required. Must be unique for your page. |
 | children | CSS selector for masonry items | Optional, if not present, will be a concatenation of previous value and `> *` - usually works fine. |
 | countFn | Function, which will get a container node as argument, and return the number of columns | Optional, if not present, some* default value will be used |
+| bySize | Boolean, set to `true` if you want to use slower, but nicer tiling algorithm | Optional, default = `false`|
 | columnClass | Class name for generated column elements | Optional, default = `col` | 
 
 ### CSS

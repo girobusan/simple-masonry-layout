@@ -7,7 +7,7 @@
   <script defer>
      window.masonry.init( {
         container: "#columns",
-        bySize: false,
+        bySize: true,
         countFn: (e)=>{ 
             return Math.floor( e.getBoundingClientRect().width/200 ) || 1 ;
             }

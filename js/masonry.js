@@ -19,6 +19,7 @@ window.masonry = {
      M.childSelector = props.children || props.container + " > *";
      M.columnClass = props.columnClass || "col" 
      M.count = props.countFn ? ()=>props.countFn(M.container) : ()=>2 
+     M.bySize = props.bySize || false;
      //find container
      M.container =   document.querySelector(props.container);
      if(!M.container){ console.info("no container found") ; return }
@@ -38,27 +39,55 @@ window.masonry = {
      //start working
      window.removeEventListener("resize", M.doColumns)
      console.info("required columns:" , cn)
+     var colElements =  new Array() ;
+    for( el = 0 ; el < cn ; el++ ){
+          const i = document.createElement("div");
+          i.setAttribute("class" , M.columnClass);
+          colElements.push(i)
+          }
+
+
+     if (!M.bySize){
+     //simple split algorithm
      //count lengths of columns
      //shortest 
-     const shrt = Math.floor( M.items.length/cn );
-     //remainder (number of longer columns)
-     const cleft = M.items.length - ( shrt * cn );
-     const colElements = new Array(cn);
+       const shrt = Math.floor( M.items.length/cn );
+       //remainder (number of longer columns)
+       const cleft = M.items.length - ( shrt * cn );
 
-     for ( i = 0 ; i < cn ; i++ ){
+       for ( i = 0 ; i < cn ; i++ ){
 
-        const thisColLength = shrt + ( i < cleft ? 1 : 0 )
-        const cElement = document.createElement("div");
-        colElements[i] = cElement;
-        cElement.setAttribute("class" , M.columnClass);
+         const thisColLength = shrt + ( i < cleft ? 1 : 0 )
+         for( y = 0 ; y < thisColLength ; y++ ){
+           colElements[i].appendChild( M.items[ i + (y*cn ) ]  )
+         }     
+       }
+       //append
+       M.container.innerHTML = "";
+       colElements.forEach( e=>M.container.appendChild(e) );
+     }else{
+       //by size algorithm
+       M.container.innerHTML = "";
+       colElements.forEach(e=>M.container.appendChild(e));
 
-        for( y = 0 ; y < thisColLength ; y++ ){
-           cElement.appendChild( M.items[ i + (y*cn ) ]  )
-        }     
+       function getShortest(){
+         const lengths =  colElements.map(
+           c=>{
+              const childs = c.childNodes;
+              let l = 0;
+              childs.forEach( c=>{
+                l += c.getBoundingClientRect().height;
+              } )
+              return l;
+           }
+         );
+         return colElements[ lengths.indexOf( Math.min( ...lengths ) ) ]
+       }//return shortest col
+
+       M.items.forEach( item=>{
+           getShortest().appendChild(item);
+       } )
      }
-     //append
-     M.container.innerHTML = "";
-     colElements.forEach( e=>M.container.appendChild(e) );
      M.colsNow = cn;
      //throttle
      window.setTimeout(()=>{ 
