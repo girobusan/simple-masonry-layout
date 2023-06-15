@@ -52,7 +52,13 @@ Init function parameter is an object with fields:
 
 ### CSS
 
-After initialization it will add `masonryWatched` class to your container node. It facilitates the creation of fallback styles (see example). You can have regular columns of flex for users without JS, and remove fallback rules for others.
+When using `bySize` option, you must be sure, that height of items is not stretched by CSS. 
+
+After initialization, the script will add `masonryWatched` class to your container node. It facilitates the creation of fallback styles (see example). You can have regular columns or flex for users without JS, and remove fallback rules for others.
+
+Also, class `masonryBuilt` is set after building the tiling, and removed while 
+tiling rebuilds. If you want to use `bySize` option, **and** add some stretching to your items, you may style them without stretching and add all stretching rules under
+`.masonryBuilt` selector. 
 
 ------
 \* maybe, 2?
