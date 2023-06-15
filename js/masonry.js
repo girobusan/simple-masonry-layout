@@ -23,7 +23,7 @@ window.masonry = {
      //find container
      M.container =   document.querySelector(props.container);
      if(!M.container){ console.info("no container found") ; return }
-     M.container.setAttribute("class" , "masonryWatched")
+     M.container.classList.add( "masonryWatched");
      //gather childs
      M.items = Array.from( M.container.querySelectorAll(M.childSelector) );
      //add listener
@@ -43,6 +43,7 @@ window.masonry = {
      if(cn==M.colsNow){ return; }
      //start working
      window.removeEventListener("resize", M.doColumns)
+     M.container.classList.remove("masonryBuilt");
      console.info("required columns:" , cn)
      var colElements =  new Array() ;
     for( el = 0 ; el < cn ; el++ ){
@@ -52,7 +53,7 @@ window.masonry = {
           }
 
 
-     if (!M.bySize){
+     if (!M.bySize || M.items.length <=cn){
      //simple split algorithm
      //count lengths of columns
      //shortest 
@@ -94,6 +95,7 @@ window.masonry = {
        } )
      }
      M.colsNow = cn;
+     M.container.classList.add("masonryBuilt");
      //throttle
      window.setTimeout(()=>{ 
         window.addEventListener("resize", M.doColumns);
