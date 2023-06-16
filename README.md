@@ -58,7 +58,7 @@ After initialization, the script will add `masonryWatched` class to your contain
 
 Also, class `masonryBuilt` is set after building the tiling, and removed while 
 tiling rebuilds. If you want to use `bySize` option, **and** add some stretching to your items, you may style them without stretching and add all stretching rules under
-`.masonryBuilt` selector. 
+`.masonryBuilt` selector. It opens some interesting opportunities.
 
 ------
 \* maybe, 2?
