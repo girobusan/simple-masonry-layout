@@ -19,8 +19,7 @@ window.masonry = {
      M.childSelector = props.children || props.container + " > *";
      M.columnClass = props.columnClass || "col" 
      M.count = props.countFn ? ()=>props.countFn(M.container) : ()=>2 
-     M.bySize = props.bySize || false;
-     //find container
+     M.bySize = props.bySize || false; //find container
      M.container =   document.querySelector(props.container);
      if(!M.container){ console.info("no container found") ; return }
      M.container.classList.add( "masonryWatched");
@@ -31,16 +30,16 @@ window.masonry = {
 
      if(props.bySize){
        //we have to rebuild columns after complete load
-       window.addEventListener("load" , M.doColumns);
+       window.addEventListener("load" , ()=>M.doColumns(true));
      }
      M.doColumns();
   },
 
-  doColumns: function(){
+  doColumns: function(force){
      const M = window.masonry;
      //how many columns do we need?
      const cn = Math.min( M.count() , M.items.length);
-     if(cn==M.colsNow){ return; }
+     if(cn==M.colsNow && !force){ return; }
      //start working
      window.removeEventListener("resize", M.doColumns)
      M.container.classList.remove("masonryBuilt");
